@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <title>Amogus Generator</title>
+</head>
+<body>
+  <template>
+    <!--Modello per caselle editor-->
+    <div class="item">
+      <img class="resizeable icon_v" src="img/drop_here.png" alt="Trascina qui" ondrop="dropPart(event);" ondragover="allowDrop(event);" ondragleave="finishDrop(event);">
+      <span class="name">(VUOTO)</span>
+      <div class="commands">
+        <button id="remove" onclick="removeItem(this.parentElement.parentElement);">Rimuovi</button>
+        <button id="up" onclick="swapItem(this.parentElement.parentElement, -1);">Su</button>
+        <button id="down" onclick="swapItem(this.parentElement.parentElement, 1);">Giu</button>
+        <div>
+          <input type="checkbox" id="flip" onclick="flipItem(this);">
+          <label for="flip">Gira</label>
+        </div>
+      </div>
+    </div>
+    <!--Modello per pop-up-->
+    <div class="popup">
+      <div class="popup_content">
+        <div class="popup_header">
+          <h2 style="font-size: 35px; text-align: center;">Informassius per l'usus</h2>
+        </div>
+        <div class="popup_body">
+          <img height="150px" width="150px" src="img/among-us-sus.gif" align="right">
+          <ul style="font-size: 25px;">
+            <li>Per prima cosa premi sul pulsante 'Aggiungi parte'</li>
+            <li>Scegli una parte del corpo e trascinala nello spazio vuoto</li>
+            <li>Rendi il tutto più <a href="https://www.youtube.com/watch?v=grd-K33tOSM" target="_blank">sus</a></li>
+            <li>Clicca il pulsante 'Aggiorna' per ottenere il tuo crewmate</li>
+          </ul>
+        </div>
+        <div class="popup_footer">
+          <button id="close_popup" onclick="closePopup();">Dunno man, kinda SUS</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <div class="titlebar">
+    <span style="text-align: center;font-size: 60px;">@</span>  <!--Il font lo renderizza come il titolo del gioco-->
+  </div>
+  <div class="container">
+    <div class="toolbar">
+      <img id="testa" class="resizeable clickable" src="img/am.png" alt="Am" draggable="true" ondragstart="dragPart(event);">
+      <img id="pancia" class="resizeable clickable" src="img/og.png" alt="Og" draggable="true" ondragstart="dragPart(event);" width="60" height="33">
+      <img id="gambe" class="resizeable clickable" src="img/us.png" alt="Us" draggable="true" ondragstart="dragPart(event);">
+    </div>
+    <div class="split_view">
+      <div class="build" id="item_list_v">
+        <button id="add">Aggiungi parte</button>
+      </div>
+      <div class="preview">
+        <div class="title_prev">
+          <span>Anteprimus</span>
+          <button id="refresh" onclick="refreshPreview()">Aggiorna</button>
+        </div>
+        <div class="prev_container"></div>
+        <span id="mogus_name"></span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
